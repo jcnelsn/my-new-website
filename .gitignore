@@ -20,6 +20,10 @@
 # production
 /build
 
+# Large binary files
+app/fonts/*.woff
+public/images/*.{png,jpg,jpeg,PNG}
+
 # misc
 .DS_Store
 *.pem
