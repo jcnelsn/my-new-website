@@ -1,12 +1,14 @@
 import React from 'react';
 import Image from 'next/image';
+import type { StaticImageData } from 'next/image';
+import { surf, bbq, volleyball, isu, travel, dune } from '@/app/images';
 
 interface Interest {
   category: string;
   title: string;
   description: string;
   icon: string;
-  image?: string;
+  image: StaticImageData;
 }
 
 const interests: Interest[] = [
@@ -15,42 +17,42 @@ const interests: Interest[] = [
     title: "Surfing",
     description: "I started surfing just over a year ago. I've found it to be an amazingly therapeutic activity that continues to challenge me.",
     icon: "🏄‍♂️",
-    image: "/images/surf.png"
+    image: surf
   },
   {
     category: "Lifestyle",
     title: "Hosting BBQs",
     description: "After moving to a new city, I quickly found community in bringing friends and strangers alike together over good food and conversation. I've met some of my best friends through my BBQs. The one pictured was cowboy/girl themed.",
     icon: "🍖",
-    image: "/images/bbq.jpeg"
+    image: bbq
   },
   {
     category: "Sports & Activities",
     title: "Volleyball",
     description: "I have a volleyball net that I bring to a nearby park every Tuesday. I've grown to love the game and the community we've formed around it.",
     icon: "🏐",
-    image: "/images/volleyball.png"
+    image: volleyball
   },
   {
     category: "College Sports",
     title: "Iowa State Athletics",
     description: "Passionate Cyclones fan and alum. You won't be hard pressed to find me watching or attending games at Jack Trice Stadium or Hilton Coliseum.",
     icon: "🏈",
-    image: "/images/isu.jpeg"
+    image: isu
   },
   {
     category: "Lifestyle",
     title: "Travel",
     description: "I discovered a love for travel in high school during an exchange trip to Germany. Since then, I've been fortunate to travel to over 10 countries and counting. Each place brings freshness and inspiration.",
     icon: "✈️",
-    image: "/images/travel.jpeg"
+    image: travel
   },
   {
     category: "Literature",
     title: "Dune Series",
     description: "I was NOT a fiction reader before Dune. Now, I'm a bit obsessed. The blend of politics/religion, world-building, and constant psycho-analysis is awe-inspiring. Currently on book 3 - Children of Dune.",
     icon: "📚",
-    image: "/images/dune.jpg"
+    image: dune
   }
 ];
 
@@ -70,6 +72,7 @@ export default function Interests() {
                 <Image
                   src={interest.image}
                   alt={interest.title}
+                  placeholder="blur"
                   fill
                   className={`object-cover transform group-hover:scale-105 transition-transform duration-500 
                     ${interest.title === "Volleyball" ? "object-[center_30%]" : ""}

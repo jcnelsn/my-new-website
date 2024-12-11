@@ -1,8 +1,10 @@
 import React from 'react';
 import Image from 'next/image';
+import type { StaticImageData } from 'next/image';
+import { thirdPlaces, sprintSage, swift1, swift2, swift3 } from '@/app/images';
 
 interface ProjectImage {
-  src: string;
+  src: StaticImageData;
   alt: string;
   span?: boolean;
 }
@@ -10,7 +12,7 @@ interface ProjectImage {
 interface Project {
   title: string;
   description: string;
-  image?: string;
+  image?: StaticImageData;
   images?: ProjectImage[];
   technologies: string[];
   link: string;
@@ -21,7 +23,7 @@ const projects: Project[] = [
   {
     title: "3rd Places (IOS Mobile App)",
     description: "Leading development of the 3rd Places mobile app. 3rd Places is a social platform that allows users to discover and share unique gatherings in their community.",
-    image: "/images/3P_Overview_SC.png",
+    image: thirdPlaces,
     technologies: ["Figma", "UI/UX Design", "User Research", "Marketing", "IOS"],
     link: "/projects/traffic-management",
     featured: true
@@ -29,7 +31,7 @@ const projects: Project[] = [
   {
     title: "Sprint Sage (Berkeley AI-Hackathon)",
     description: "In the largest AI-focused hackathon ever held, my team and I built a platform to assist product managers by leveraging AI to generate sprint plans based on contextual data like historical data, user feedback, and project requirements.",
-    image: "/images/sprint-sage.png",
+    image: sprintSage,
     technologies: ["Python", "Sales Pitching", "AI/LLMs", "Data Extraction"],
     link: "/projects/smart-city-dashboard"
   },
@@ -37,9 +39,9 @@ const projects: Project[] = [
     title: "Swift TA",
     description: "Swift TA is a web application that allows students to collaboratively create study flashcards and a chat-based study assistant based on class materials like lecture notes, assignments, and study guides. Achieved over 1 million likes on TikTok.",
     images: [
-      { src: "/images/swift1.png", alt: "Swift Project View 1" },
-      { src: "/images/swift2.png", alt: "Swift Project View 2" },
-      { src: "/images/swift3.png", alt: "Swift Project View 3" }
+      { src: swift1, alt: "Swift Project View 1" },
+      { src: swift2, alt: "Swift Project View 2" },
+      { src: swift3, alt: "Swift Project View 3" }
     ],
     technologies: ["Python", "Vector Embeddings", "LLMs", "Social Media Marketing"],
     link: "/projects/swift-project"
@@ -71,8 +73,9 @@ export default function Projects() {
                 <Image
                   src={project.image}
                   alt={project.title}
-                  fill
+                  placeholder="blur"
                   className="object-contain"
+                  fill
                 />
               ) : project.images ? (
                 <div className="grid grid-cols-2 gap-2 h-full p-2">
@@ -81,8 +84,9 @@ export default function Projects() {
                       <Image
                         src={img.src}
                         alt={img.alt}
-                        fill
+                        placeholder="blur"
                         className="object-contain"
+                        fill
                       />
                     </div>
                   ))}

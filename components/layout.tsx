@@ -5,6 +5,7 @@ import Image from 'next/image';
 import Nav from './nav';
 import Link from 'next/link';
 import Footer from './footer';
+import { headshot } from '@/app/images'
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -40,9 +41,10 @@ export default function Layout({ children }: LayoutProps) {
               <div className="relative w-32 h-32 mx-auto lg:mx-0">
                 <div className="absolute inset-0 rounded-full bg-white/50 backdrop-blur-sm" />
                 <Image
-                  src="/images/headshot.png"
+                  src={headshot}
                   alt="Jack Nelson"
                   fill
+                  placeholder="blur"
                   className="object-cover rounded-full brightness-105 contrast-[1.02] shadow-md"
                 />
               </div>

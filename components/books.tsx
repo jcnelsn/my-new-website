@@ -3,11 +3,13 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { thinkingInSystems, teamOfTeams, zeroToOne } from '@/app/images'
+import type { StaticImageData } from 'next/image';
 
 interface Book {
   title: string;
   author: string;
-  coverImage: string;
+  coverImage: StaticImageData;
   amazonLink: string;
   thoughts: string;
   keyTakeaway: string;
@@ -17,7 +19,7 @@ const books: Book[] = [
   {
     title: "Thinking in Systems",
     author: "Donella H. Meadows",
-    coverImage: "/images/thinking_in_systems.jpg",
+    coverImage: thinkingInSystems,
     amazonLink: "https://www.amazon.com/Thinking-Systems-Donella-H-Meadows/dp/1603580557",
     thoughts: "This book revolutionized how I understand complex problems. It provided a framework for seeing the interconnections between different parts of a system and how small changes can lead to significant outcomes.",
     keyTakeaway: "Understanding feedback loops and system structures is crucial for effective problem-solving and creating lasting change."
@@ -25,7 +27,7 @@ const books: Book[] = [
   {
     title: "Team of Teams",
     author: "Stanley McChrystal",
-    coverImage: "/images/team_of_teams.jpg",
+    coverImage: teamOfTeams,
     amazonLink: "https://www.amazon.com/Team-Teams-Rules-Engagement-Complex/dp/1591847486",
     thoughts: "McChrystal's insights on adapting organizational structure to meet modern challenges resonated deeply with my experience in fast-paced tech environments. The book demonstrates how traditional hierarchies can evolve to become more agile and effective.",
     keyTakeaway: "In complex environments, adaptability and shared consciousness are more valuable than efficiency and traditional command structures."
@@ -33,7 +35,7 @@ const books: Book[] = [
   {
     title: "Zero to One",
     author: "Peter Thiel",
-    coverImage: "/images/zero_to_one.jpg",
+    coverImage: zeroToOne,
     amazonLink: "https://www.amazon.com/Zero-One-Notes-Startups-Future/dp/0804139296",
     thoughts: "A paradigm-shifting perspective on innovation that challenged my understanding of true progress. Thiel's distinction between horizontal and vertical progress fundamentally changed how I approach problem-solving.",
     keyTakeaway: "The best entrepreneurs don't just iterate on existing ideas - they create entirely new categories."
@@ -60,7 +62,7 @@ export default function Books() {
                   <Image
                     src={book.coverImage}
                     alt={book.title}
-                    fill
+                    placeholder="blur"
                     className="object-cover rounded-md"
                   />
                 </div>
