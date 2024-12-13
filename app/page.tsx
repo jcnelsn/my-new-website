@@ -3,6 +3,7 @@ import Experience from "@/components/experience"
 import Projects from "@/components/projects"
 import Books from "@/components/books"
 import Interests from "@/components/interests"
+import Blogs from '@/components/blogs'
 
 export default function Home() {
   return (
@@ -56,6 +57,7 @@ export default function Home() {
           </div>
         </section>
 
+        <Blogs />
         <Experience />
         <Projects />
         <Books />
