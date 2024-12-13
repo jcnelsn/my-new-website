@@ -36,11 +36,13 @@ export default function Contact() {
         body: JSON.stringify(data),
       })
 
-      if (!response.ok) throw new Error('Failed to send message')
+      if (!response.ok) {
+        throw new Error('Failed to send message')
+      }
 
       setSubmitStatus('success')
       reset()
-    } catch (error) {
+    } catch {
       setSubmitStatus('error')
     } finally {
       setIsSubmitting(false)
@@ -54,9 +56,9 @@ export default function Contact() {
       <main className="flex-grow container mx-auto px-4 pt-32 pb-16">
         <div className="max-w-xl mx-auto">
           <div className="space-y-3 mb-8">
-            <h1 className="text-2xl font-medium text-orange-950">Let's Connect!</h1>
+            <h1 className="text-2xl font-medium text-orange-950">Let&apos;s Connect!</h1>
             <p className="text-sm text-orange-800/90 leading-relaxed">
-              I'm always excited to discuss new opportunities, answer questions, or chat about product development and AI. 
+              I&apos;m always excited to discuss new opportunities, answer questions, or chat about product development and AI. 
               I personally read and respond to every message.
             </p>
           </div>

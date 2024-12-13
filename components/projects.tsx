@@ -1,10 +1,9 @@
 import React from 'react';
 import Image from 'next/image';
-import type { StaticImageData } from 'next/image';
-import { thirdPlaces, sprintSage, swift1, swift2, swift3 } from '@/app/images';
+import { thirdPlaces, sprintSage, swift1, swift2 } from '../app/images';
 
 interface ProjectImage {
-  src: StaticImageData;
+  src: string;
   alt: string;
   span?: boolean;
 }
@@ -12,7 +11,7 @@ interface ProjectImage {
 interface Project {
   title: string;
   description: string;
-  image?: StaticImageData;
+  image?: string;
   images?: ProjectImage[];
   technologies: string[];
   link: string;
@@ -40,8 +39,7 @@ const projects: Project[] = [
     description: "Swift TA is a web application that allows students to collaboratively create study flashcards and a chat-based study assistant based on class materials like lecture notes, assignments, and study guides. Achieved over 1 million likes on TikTok.",
     images: [
       { src: swift1, alt: "Swift Project View 1" },
-      { src: swift2, alt: "Swift Project View 2" },
-      { src: swift3, alt: "Swift Project View 3" }
+      { src: swift2, alt: "Swift Project View 2" }
     ],
     technologies: ["Python", "Vector Embeddings", "LLMs", "Social Media Marketing"],
     link: "/projects/swift-project"
@@ -70,13 +68,15 @@ export default function Projects() {
             {/* Project Image */}
             <div className="relative h-[200px] rounded-lg overflow-hidden bg-orange-50">
               {project.image ? (
-                <Image
-                  src={project.image}
-                  alt={project.title}
-                  placeholder="blur"
-                  className="object-contain"
-                  fill
-                />
+                <div className="relative w-full h-full">
+                  <Image
+                    src={project.image}
+                    alt={project.title}
+                    fill
+                    className="object-contain"
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                  />
+                </div>
               ) : project.images ? (
                 <div className="grid grid-cols-2 gap-2 h-full p-2">
                   {project.images.slice(0, 2).map((img, imgIndex) => (
@@ -84,9 +84,9 @@ export default function Projects() {
                       <Image
                         src={img.src}
                         alt={img.alt}
-                        placeholder="blur"
-                        className="object-contain"
                         fill
+                        className="object-contain"
+                        sizes="(max-width: 768px) 50vw, 25vw"
                       />
                     </div>
                   ))}

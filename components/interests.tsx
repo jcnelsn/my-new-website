@@ -1,14 +1,13 @@
 import React from 'react';
 import Image from 'next/image';
-import type { StaticImageData } from 'next/image';
-import { surf, bbq, volleyball, isu, travel, dune } from '@/app/images';
+import { surf, bbq, volleyball, isu, travel, dune } from '../app/images';
 
 interface Interest {
   category: string;
   title: string;
   description: string;
   icon: string;
-  image: StaticImageData;
+  image: string;
 }
 
 const interests: Interest[] = [
@@ -30,7 +29,7 @@ const interests: Interest[] = [
     category: "Sports & Activities",
     title: "Volleyball",
     description: "I have a volleyball net that I bring to a nearby park every Tuesday. I've grown to love the game and the community we've formed around it.",
-    icon: "🏐",
+    icon: "��",
     image: volleyball
   },
   {
@@ -72,13 +71,13 @@ export default function Interests() {
                 <Image
                   src={interest.image}
                   alt={interest.title}
-                  placeholder="blur"
                   fill
                   className={`object-cover transform group-hover:scale-105 transition-transform duration-500 
                     ${interest.title === "Volleyball" ? "object-[center_30%]" : ""}
                     ${interest.title === "Hosting BBQs" ? "object-[center_70%]" : ""}
                     ${interest.title === "Travel" ? "object-[center_60%]" : ""}
                     ${interest.title === "Iowa State Athletics" ? "object-[center_60%]" : ""}`}
+                  sizes="(max-width: 768px) 100vw, 50vw"
                 />
               </div>
             )}

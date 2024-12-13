@@ -4,12 +4,11 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { thinkingInSystems, teamOfTeams, zeroToOne } from '@/app/images'
-import type { StaticImageData } from 'next/image';
 
 interface Book {
   title: string;
   author: string;
-  coverImage: StaticImageData;
+  coverImage: string;
   amazonLink: string;
   thoughts: string;
   keyTakeaway: string;
@@ -62,8 +61,9 @@ export default function Books() {
                   <Image
                     src={book.coverImage}
                     alt={book.title}
-                    placeholder="blur"
+                    fill
                     className="object-cover rounded-md"
+                    sizes="85px"
                   />
                 </div>
               </Link>
